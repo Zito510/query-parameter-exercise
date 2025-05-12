@@ -2,6 +2,22 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route("/produkte")
+def produkte():
+    kategorie = request.args.get("kategorie")
+    if kategorie:
+        return f"Zeige Produkte aus der Kategorie: {kategorie}"
+    else:
+        return "Zeige alle Produkte"
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
 @app.route("/")
 def homepage():
     return "Heute ist der Moody Monday"
